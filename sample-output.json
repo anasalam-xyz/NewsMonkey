@@ -1,8 +1,7 @@
-import React, { Component } from 'react'
-import NewsItem from './NewsItem'
-
-export class News extends Component {
-    articles = [
+{
+    "status": "ok",
+    "totalResults": 10,
+    "articles": [
         {
             "source": {
                 "id": "bbc-news",
@@ -133,28 +132,6 @@ export class News extends Component {
             "publishedAt": "2025-10-14T01:37:22.7698037Z",
             "content": "In 2022 the previous government directed energy companies to spend billions of pounds, raised via levies on energy bills, on insulating homes across the UK, targetting people receiving benefits and t… [+1128 chars]"
         }
-    ];
-    constructor() {
-        super();
-        this.state = {
-            articles: this.articles,
-            loading: false,
-        }
-    }
-    render() {
-    return (
-        <div className="container my-3">
-            <h2>NewsMonkey - Top Headlines</h2>
-            <div className="row my-3">
-                {this.state.articles.map(element=>{
-                    return (<div className="col-md-4 my-2" key={element.url}>
-                    <NewsItem title={element.title} description={element.description.slice(0,64)+". . ."} newsURL={element.url} imageURL={element.urlToImage}/>
-                    </div>);
-                })}
-            </div>
-        </div>
-        )
-    }
-}
+    ]
 
-export default News
+}
