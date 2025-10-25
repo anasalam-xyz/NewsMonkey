@@ -1,156 +1,62 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import NewsItem from './NewsItem'
+import Spinner from '../Spinner';
 
 export class News extends Component {
-    articles = [
-        {
-            "source": {
-                "id": "bbc-news",
-                "name": "BBC News"
-            },
-            "author": "BBC News",
-            "title": "Tommy Robinson police stop at Channel Tunnel unlawful, lawyer says",
-            "description": "The far-right activist was charged under the Terrorism Act over an incident at the Channel Tunnel in July 2024.",
-            "url": "https://www.bbc.co.uk/news/articles/c0rpwkp9xz2o",
-            "urlToImage": "https://ichef.bbci.co.uk/ace/branded_news/1200/cpsprodpb/7da6/live/6f9ef8d0-a8e2-11f0-b741-177e3e2c2fc7.jpg",
-            "publishedAt": "2025-10-14T13:52:18.7408768Z",
-            "content": "If found guilty, Mr Lennon could be jailed for up to three months and/or receive a £2,500 fine.\r\nHe was stopped by police on 28 July, 2024, using their counter-terrorism powers as he prepared to ente… [+2124 chars]"
-        },
-        {
-            "source": {
-                "id": "bbc-news",
-                "name": "BBC News"
-            },
-            "author": "BBC News",
-            "title": "UK forecast to be second-fastest growing economy in G7 - IMF",
-            "description": "The International Monetary Fund (IMF) has upgraded the rate at which the UK economy will grow this year.",
-            "url": "https://www.bbc.co.uk/news/articles/cn092p27xn0o",
-            "urlToImage": "https://ichef.bbci.co.uk/ace/branded_news/1200/cpsprodpb/64e5/live/68968370-a8ef-11f0-92db-77261a15b9d2.jpg",
-            "publishedAt": "2025-10-14T13:37:18.8956178Z",
-            "content": "The G7 are seven advanced economies - the US, UK, France, Germany, Italy, Canada and Japan - but the group doesn't include fast-growing economies such as China and India.\r\nThe IMF is an international… [+1266 chars]"
-        },
-        {
-            "source": {
-                "id": "bbc-news",
-                "name": "BBC News"
-            },
-            "author": "BBC News",
-            "title": "Argentina's President Milei divided his nation but won over Trump",
-            "description": "Argentina's President Milei divided his nation but won over Trump",
-            "url": "https://www.bbc.co.uk/news/articles/c9865l8540eo",
-            "urlToImage": "https://ichef.bbci.co.uk/ace/branded_news/1200/cpsprodpb/91a6/live/955aae40-a8f4-11f0-b741-177e3e2c2fc7.png",
-            "publishedAt": "2025-10-14T13:22:22.4748156Z",
-            "content": "As to the question of whether Milei has succeeded, the answer largely depends how you define success - and who it is for.\r\nMany workers see shuttered factories, rocketing bills, and a vanishing safet… [+697 chars]"
-        },
-        {
-            "source": {
-                "id": "bbc-news",
-                "name": "BBC News"
-            },
-            "author": "BBC News",
-            "title": "Asylum seeker 'murdered hotel worker Rhiannon Whyte in frenzied attack'",
-            "description": "Deng Chol Majek murdered Rhiannon Whyte in a \"vicious and frenzied attack\", a court hears.",
-            "url": "https://www.bbc.co.uk/news/articles/cwy902djzv2o",
-            "urlToImage": "https://ichef.bbci.co.uk/ace/branded_news/1200/cpsprodpb/88b8/live/a00ccce0-a8f6-11f0-b741-177e3e2c2fc7.jpg",
-            "publishedAt": "2025-10-14T12:37:22.3652064Z",
-            "content": "She added: \"In between the station and the hotel he had thrown Rhiannon's phone into a river. \r\n\"Once at the hotel he was seen dancing and laughing, clearly excited about what he had done.\"\r\nThe trai… [+978 chars]"
-        },
-        {
-            "source": {
-                "id": "bbc-news",
-                "name": "BBC News"
-            },
-            "author": "BBC News",
-            "title": "Jesy Nelson has 'never felt prouder' of her body after birth of twins",
-            "description": "The singer said she never wanted her daughters to feel the way she had felt previously about her body.",
-            "url": "https://www.bbc.co.uk/news/articles/cn092ldx0w8o",
-            "urlToImage": "https://ichef.bbci.co.uk/ace/branded_news/1200/cpsprodpb/1fa8/live/54efd8e0-a8e4-11f0-9f43-d30f6cff76c5.jpg",
-            "publishedAt": "2025-10-14T12:07:26.9269765Z",
-            "content": "Nelson, 34, gave birth to her twins prematurely at 31 weeks, having previously revealed she had experienced rare complications during the pregnancy.\r\nIn March, she said she had undergone a \"successfu… [+1414 chars]"
-        },
-        {
-            "source": {
-                "id": "bbc-news",
-                "name": "BBC News"
-            },
-            "author": "BBC News",
-            "title": "Britain's most remote pub cancels Harry Potter night over backlash",
-            "description": "The Old Forge in Knoydart said staff had received 'inappropriate grief' over the Halloween event",
-            "url": "https://www.bbc.co.uk/news/articles/cn51r017656o",
-            "urlToImage": "https://ichef.bbci.co.uk/ace/branded_news/1200/cpsprodpb/a49c/live/a3b1d020-a8e2-11f0-9f43-d30f6cff76c5.png",
-            "publishedAt": "2025-10-14T11:37:22.5829139Z",
-            "content": "The pub said it wanted to reiterate that it cared about \"everyone in our community.\"\r\nIt added: \"We would ask folk to be kind and respectful to each other and our staff.\r\n\"Should anyone have an issue… [+555 chars]"
-        },
-        {
-            "source": {
-                "id": "bbc-news",
-                "name": "BBC News"
-            },
-            "author": "BBC News",
-            "title": "Dan and Phil: YouTubers confirm 'Phan' relationship after 16 years",
-            "description": "Dan says intense fan intrusion \"could have killed me\", but that they \"can't live in fear any more\".",
-            "url": "https://www.bbc.co.uk/news/articles/cd7r31p0eyyo",
-            "urlToImage": "https://ichef.bbci.co.uk/ace/branded_news/1200/cpsprodpb/4f5d/live/b3ff9840-a8d8-11f0-a522-95977dce8b09.jpg",
-            "publishedAt": "2025-10-14T11:22:24.3342927Z",
-            "content": "Their reveal was met with praise and love from longtime fans.\r\n\"I just adore you both so much,\" wrote one.\r\nAnother wrote: \"Listen. Not our business. Never been our business. Fully aware it's parasoc… [+802 chars]"
-        },
-        {
-            "source": {
-                "id": "bbc-news",
-                "name": "BBC News"
-            },
-            "author": "BBC News",
-            "title": "Man jailed for five years for threatening to kill Nigel Farage on TikTok",
-            "description": "The Reform UK leader has described the threats made in a TikTok video as \"pretty chilling\".",
-            "url": "https://www.bbc.co.uk/news/articles/cj97lkmd23po",
-            "urlToImage": "https://ichef.bbci.co.uk/ace/branded_news/1200/cpsprodpb/343f/live/f5763790-a5e3-11f0-92db-77261a15b9d2.jpg",
-            "publishedAt": "2025-10-14T11:22:21.3482428Z",
-            "content": "In the video, Khan pointed towards his face tattoo and said he was going to \"pop, pop, pop\" the MP for Clacton, in Essex, referring to him as \"Englishman Nigel\".\r\nSentencing him, judge Mrs Justice St… [+887 chars]"
-        },
-        {
-            "source": {
-                "id": "bbc-news",
-                "name": "BBC News"
-            },
-            "author": "BBC News",
-            "title": "Ex-Premier League referee David Coote admits child image offence",
-            "description": "David Coote was charged on 12 August following an investigation by Nottinghamshire Police.",
-            "url": "https://www.bbc.co.uk/news/articles/cx20negxx11o",
-            "urlToImage": "https://ichef.bbci.co.uk/ace/branded_news/1200/cpsprodpb/a46b/live/1ae926f0-a8e5-11f0-9f43-d30f6cff76c5.jpg",
-            "publishedAt": "2025-10-14T10:22:20.4421712Z",
-            "content": "Former Premier League referee David Coote has pleaded guilty to making an indecent image of a child.\r\nThe 43-year-old was charged in August following an investigation by Nottinghamshire Police.\r\nHe a… [+279 chars]"
-        },
-        {
-            "source": {
-                "id": "bbc-news",
-                "name": "BBC News"
-            },
-            "author": "BBC News",
-            "title": "Thousands of homes with botched eco insulation 'must be fixed'",
-            "description": "Insulation programmes costing billions of pounds have led to widespread problems with damp and mould.",
-            "url": "https://www.bbc.co.uk/news/articles/c3w965gz8zgo",
-            "urlToImage": "https://ichef.bbci.co.uk/ace/branded_news/1200/cpsprodpb/5f5f/live/1d995f00-a886-11f0-a23e-ad95148998b2.jpg",
-            "publishedAt": "2025-10-14T01:37:22.7698037Z",
-            "content": "In 2022 the previous government directed energy companies to spend billions of pounds, raised via levies on energy bills, on insulating homes across the UK, targetting people receiving benefits and t… [+1128 chars]"
-        }
-    ];
+    articles = [];
+    static propTypes = {
+        country: PropTypes.string.isRequired,
+        category: PropTypes.string.isRequired,
+        pageSize: PropTypes.number.isRequired,
+    }
+    static defaultProps = {
+        country: "in",
+        category: "general",
+        pageSize: 12,
+    }
     constructor() {
         super();
         this.state = {
+            totalResults: 0,
             articles: this.articles,
             loading: false,
+            page: 1,
         }
+    }
+    async updateNews(movePage) {
+        const nextPage = this.state.page + movePage;
+        this.setState({page: nextPage, loading: true});
+        const apiKey = "0d5188b775cc4e79abb2319447c2d002";
+        const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&pageSize=${this.props.pageSize}&apiKey=${apiKey}&page=${nextPage}`;
+        console.log(url)
+        let data = await fetch(url);
+        let parsedData = await data.json();
+        this.setState({
+            articles: parsedData.articles,
+            totalResults: parsedData.totalResults,
+            loading:false
+        });
+    }
+    async componentDidMount() {
+        document.title = "NewsMonkey"+(this.props.category==="general"?"":(" - "+this.props.category.charAt(0).toUpperCase()+this.props.category.slice(1)))+" - Top Headlines";
+        this.updateNews(0);
     }
     render() {
     return (
         <div className="container my-3">
-            <h2>NewsMonkey - Top Headlines</h2>
-            <div className="row my-3">
-                {this.state.articles.map(element=>{
+            <h1>NewsMonkey - Top {(this.props.category==="general"?"":(this.props.category.charAt(0).toUpperCase()+this.props.category.slice(1)))+" "}Headlines</h1>
+            {this.state.loading && <Spinner/>}
+            {!this.state.loading && <div className="row my-3">
+                {(this.state.articles || []).map(element=>{
                     return (<div className="col-md-4 my-2" key={element.url}>
-                    <NewsItem title={element.title} description={element.description.slice(0,64)+". . ."} newsURL={element.url} imageURL={element.urlToImage}/>
+                    <NewsItem title={element.title} description={element.description?element.description.slice(0,64)+". . .":""} newsURL={element.url} imageURL={element.urlToImage?element.urlToImage:"https://images.nintendolife.com/114e7f97b9333/large.jpg"} author={element.author?element.author:"Unknown"} date={new Date(element.publishedAt).toGMTString()}/>
                     </div>);
                 })}
+            </div>}
+            <div className="container d-flex justify-content-between">
+                <button disabled={this.state.page<=1} type="button" className="btn btn-dark" onClick={()=>{this.updateNews(-1)}}>&larr; Previous</button>
+                <button disabled={this.state.page+1>Math.ceil(this.state.totalResults/this.props.pageSize)} type="button" className="btn btn-dark" onClick={()=>{this.updateNews(1)}}>Next &rarr;</button>
             </div>
         </div>
         )
