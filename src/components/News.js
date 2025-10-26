@@ -10,11 +10,13 @@ export class News extends Component {
         country: PropTypes.string.isRequired,
         category: PropTypes.string.isRequired,
         pageSize: PropTypes.number.isRequired,
+        apiKey: PropTypes.string.isRequired,
     }
     static defaultProps = {
         country: "in",
         category: "general",
         pageSize: 12,
+        apiKey: ""
     }
     constructor() {
         super();
@@ -26,11 +28,10 @@ export class News extends Component {
         }
     }
     async updateNews(movePage, arr) {
+        this.props.setProgress(10);
         const nextPage = this.state.page + movePage;
         this.setState({page: nextPage, loading: true});
-        const apiKey = "0d5188b775cc4e79abb2319447c2d002";
-        const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&pageSize=${this.props.pageSize}&apiKey=${apiKey}&page=${nextPage}`;
-        console.log(url)
+        const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&pageSize=${this.props.pageSize}&apiKey=${this.props.apiKey}&page=${nextPage}`;
         let data = await fetch(url);
         let parsedData = await data.json();
         this.setState({
@@ -38,6 +39,7 @@ export class News extends Component {
             totalResults: parsedData.totalResults,
             loading:false
         });
+        this.props.setProgress(100);
     }
     fetchMoreData = () => {
         this.setState({page: this.state.page+1});
@@ -50,7 +52,7 @@ export class News extends Component {
     render() {
     return (
         <>
-            <h1 className='container'>NewsMonkey - Top {(this.props.category==="general"?"":(this.props.category.charAt(0).toUpperCase()+this.props.category.slice(1)))+" "}Headlines</h1>
+            <h1 className='container my-2'>NewsMonkey - Top {(this.props.category==="general"?"":(this.props.category.charAt(0).toUpperCase()+this.props.category.slice(1)))+" "}Headlines</h1>
             {/*this.state.loading && <Spinner/>*/}
             <InfiniteScroll
                 dataLength={this.state.articles.length}

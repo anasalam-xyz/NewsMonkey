@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 export class NavBar extends Component {
     render() {
         return (
-            <nav className="navbar navbar-expand-lg bg-body-tertiary">
+            <nav className="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
                 <div className="container-fluid">
                     <Link className="navbar-brand" to="/">NewsMonkey</Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -20,7 +20,7 @@ export class NavBar extends Component {
                             </li>
                             <li>
                                 <div className="dropdown">
-                                    <button className="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <button className="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         Category
                                     </button>
                                     <ul className="dropdown-menu">
