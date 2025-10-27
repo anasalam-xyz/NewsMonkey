@@ -1,8 +1,6 @@
-import React, { Component } from 'react'
 
-export class NewsItem extends Component {
-    render() {
-        let {title, description, imageURL,  newsURL, author, date} = this.props;
+const NewsItem = (props) => {
+        let {title, description, imageURL,  newsURL, author, date} = props;
         return (
             <div className="card" style={{width: "20rem"}}>
                 <img src={imageURL} className="card-img-top" onError={(e) => {
@@ -13,11 +11,10 @@ export class NewsItem extends Component {
                     <h5 className="card-title">{title}</h5>
                     <p className="card-text">{description}</p>
                     <p className='card-text'><small className="text-muted">By {author} on {date}</small></p>
-                    <a href={newsURL} target='_blank' className="btn btn-sm btn-primary">Read More</a>
+                    <a href={newsURL} target='_blank' rel="noopener noreferrer" className="btn btn-sm btn-primary">Read More</a>
                 </div>
             </div>  
         )
-    }
 }
 
 export default NewsItem
